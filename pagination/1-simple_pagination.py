@@ -28,6 +28,9 @@ class Server:
         self.__dataset = None
 
     def dataset(self) -> List[List]:
+        """ Retrieves and caches the dataset from
+          the CSV data file, excluding the header row.
+"""
         if self.__dataset is None:
             with open(self.DATA_FILE) as f:
                 reader = csv.reader(f)
