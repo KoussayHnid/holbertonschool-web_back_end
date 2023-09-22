@@ -40,6 +40,9 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+        """
+        Retrieves a specific page of data from the dataset"""
+
         if not isinstance(
                 page,
                 int) or not isinstance(
