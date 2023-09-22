@@ -3,6 +3,7 @@ import csv
 import math
 from typing import List
 
+
 def index_range(page, page_size):
     """
     Return a tuple of start and end indexes for a given page and page size
@@ -14,6 +15,7 @@ def index_range(page, page_size):
     end_index = start_index + page_size
 
     return start_index, end_index
+
 
 class Server:
     DATA_FILE = "Popular_Baby_Names.csv"
