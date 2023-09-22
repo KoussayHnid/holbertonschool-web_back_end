@@ -19,7 +19,9 @@ def index_range(page, page_size):
 
 
 class Server:
-    """ The `Server` class is designed for paginating a dataset from a CSV file"""
+    """ The `Server` class is designed
+    for paginating a dataset from a CSV file"""
+
     DATA_FILE = "Popular_Baby_Names.csv"
 
     def __init__(self):
