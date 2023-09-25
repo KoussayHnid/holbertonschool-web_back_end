@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""function that return values with appropriate types"""
-from typing import List, Tuple
+"""function that return values with the appropriate types"""
+from typing import List, Tuple, Sequence
 
 
-def element_length(lst: List[str]) -> List[Tuple[str, int]]:
+def element_length(lst: List[Sequence]) -> List[Tuple[Sequence, int]]:
     """
     Calculate the length of elements in a list and return a list of tuples.
     """
