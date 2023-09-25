@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-""" type-annotated function to_kv that takes a string k and an int OR float v as arguments and returns a tuple.
+""" type-annotated function to_kv that
+ takes a string k and an int OR float v as arguments and returns a tuple.
  The first element of the tuple is the string """
 from typing import Union, Tuple
 
