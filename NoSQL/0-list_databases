@@ -1,1 +1,2 @@
+// script that lists all dbs in mongo
 show dbs
