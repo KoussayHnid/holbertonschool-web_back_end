@@ -1,0 +1,6 @@
+// script that insert smthin in database
+db.school.insert(
+    {
+        name: "Holberton school"
+    }
+)
