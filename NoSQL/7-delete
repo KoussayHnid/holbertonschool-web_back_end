@@ -1,5 +1,10 @@
 // script that delete all docs with name holberton school
 use my_db
+db.school.insert(
+    {
+        name: "Holberton school"
+    }
+)
 db.school.deleteMany(
     { "name": "Holberton school"}
 )
