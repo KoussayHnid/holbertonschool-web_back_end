@@ -1,5 +1,5 @@
 // script that delete all docs with name holberton school
 use my_db
-my_db.school.deleteMany(
+db.school.deletecount(
     { "name": "Holberton school"}
 )
