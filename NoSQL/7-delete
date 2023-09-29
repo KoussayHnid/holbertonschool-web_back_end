@@ -2,7 +2,7 @@
 use my_db
 db.school.insert(
     {
-        name: "Holberton school"
+        "name": "Holberton school"
     }
 )
 db.school.deleteMany(
