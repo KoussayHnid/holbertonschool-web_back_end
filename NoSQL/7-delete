@@ -1,4 +1,4 @@
-// script that delete all docs with name holberton school
+// script that delete all docs with name holberton school in the collection school
 db.school.deleteMany(
     { "name": "Holberton school" }
 )
