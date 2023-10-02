@@ -1,6 +1,7 @@
-function getResponseFromAPI()
+function getResponseFromAPI(){
 promise.then(function(result)){
     console.log(result);
-}function (error) {
+}
+promise.catch(function (error)) {
     console.log(error);
 }
