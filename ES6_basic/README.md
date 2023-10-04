@@ -1,0 +1,1 @@
+in this project i'll know what is es6 and how to code it
