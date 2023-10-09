@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""scripte that change school topics"""
+"""Python function that changes all topics of a school document based on the name"""
 
 
 def updae_topics(mongo_collection, name, topics)
