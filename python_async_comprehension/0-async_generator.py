@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""The coroutine will loop 10 times, each time asynchronously wait 1 second"""
 import asyncio
 import random
 
@@ -11,4 +12,4 @@ async def async_generator():
         await asyncio.sleep(1)
         """The coroutine will loop 10 times"""
 
-        yield random.randint(0, 10)
+        yield random.uniform(0, 10)
