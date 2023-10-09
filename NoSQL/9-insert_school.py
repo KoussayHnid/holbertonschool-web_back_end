@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""insert a new doc in collection """
+"""python script that insert a new doc in collection """
 
 
 def insert_school(mongo_collection, **kwargs)
