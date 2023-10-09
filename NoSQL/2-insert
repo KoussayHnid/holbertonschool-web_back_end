@@ -1,7 +1,2 @@
 // script that insert smthin in database
-use my_db
-db.school.insert(
-    {
-        name: "Holberton school"
-    }
-)
+db.school.insert({name: "Holberton school"})
