@@ -1,4 +1,4 @@
-function getResponseFromAPI(){
-    return Promise.resolve();
+function getResponseFromAPI() {
+  return Promise.resolve();
 }
 export default getResponseFromAPI;
