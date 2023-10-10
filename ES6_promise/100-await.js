@@ -16,4 +16,4 @@ const asyncUploadUser = async () => {
     return result;
   }
 };
-export default asyncUploadUser
+export default asyncUploadUser;
