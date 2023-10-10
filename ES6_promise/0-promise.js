@@ -1,7 +1,10 @@
 function getResponseFromAPI(){
-promise.then(function(result)){
+promise.then (function(result)
+{
     console.log(result);
-}
-promise.catch(function (error)) {
+})
+promise.catch(function (error)
+{
     console.log(error);
+})
 }
