@@ -1,28 +1,27 @@
 export default class HolbertonCourse {
-    constructor(name, length, students) {
-      if (typeof name !== 'string') {
-        throw TypeError('Name must be a string');
-      }
-      if (typeof length !== 'number') {
-        throw TypeError('Length must be a number');
-      }
-      if (!Array.isArray(students)) {
-        throw new TypeError('Invalid argument type');
-      }
-      this._name = name;
-      this._length = length;
-      this._students = students;
+  constructor(name, length, students) {
+    if (typeof name !== 'string') {
+      throw TypeError('Name must be a string');
     }
-  
+    if (typeof length !== 'number') {
+      throw TypeError('Length must be a number');
+    }
+    if (!Array.isArray(students)) {
+      throw new TypeError('Invalid argument type');
+    }
+    this._name = name;
+    this._length = length;
+    this._students = students;
+    }
     get name() {
-      return this._name;
+  return this._name;
     }
-  
+
     set name(name) {
-      if (typeof name !== 'string') {
-        throw TypeError('Name must be a string');
-      }
-      this._name = name;
+    if (typeof name !== 'string') {
+      throw TypeError('Name must be a string');
+    }
+    this._name = name;
     }
   
     get length() {
