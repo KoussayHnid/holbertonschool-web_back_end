@@ -1,0 +1,1 @@
+ES6, or ECMAScript 2015, introduced several new features and enhancements to JavaScript, including improvements for data manipulation
