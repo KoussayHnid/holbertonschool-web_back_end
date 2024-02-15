@@ -3,6 +3,7 @@
 
 BaseCaching = __import__('base_caching').BaseCaching
 
+
 class LIFOCache(BaseCaching):
     """ LIFOCache inherits from BaseCaching and is a caching system """
 
@@ -26,8 +27,9 @@ class LIFOCache(BaseCaching):
         """ Retrieve an item from the cache"""
         if key is None or key not in self.cache_data:
             return None
-        
+
         return self.cache_data[key]
+
 
 if __name__ == "__main__":
     my_cache = LIFOCache()
