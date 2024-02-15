@@ -1,26 +1,21 @@
 #!/usr/bin/python3
-""" FIFOCache module
-"""
-from base_caching import BaseCaching
+""" FIFOCache module"""
 
+BaseCaching = __import__('base_caching').BaseCaching
 
 class FIFOCache(BaseCaching):
-    """ FIFOCache inherits from BaseCaching and is a caching system.
-    """
+    """ FIFOCache inherits from BaseCaching and is a caching system"""
 
     def __init__(self):
-        """ Initialize FIFOCache instance.
-        """
+        """ Initialize FIFOCache instance"""
         super().__init__()
 
     def put(self, key, item):
-        """ Add an item to the cache using FIFO algorithm.
-        """
+        """ Add an item to the cache using FIFO algorithm"""
         if key is None or item is None:
             return
 
         if len(self.cache_data) >= self.MAX_ITEMS:
-            # Remove the first item inserted (FIFO)
             discarded_key = next(iter(self.cache_data))
             del self.cache_data[discarded_key]
             print("DISCARD:", discarded_key)
@@ -28,13 +23,11 @@ class FIFOCache(BaseCaching):
         self.cache_data[key] = item
 
     def get(self, key):
-        """ Retrieve an item from the cache.
-        """
+        """ Retrieve an item from the cache."""
         if key is None or key not in self.cache_data:
             return None
-
+        
         return self.cache_data[key]
-
 
 if __name__ == "__main__":
     my_cache = FIFOCache()
