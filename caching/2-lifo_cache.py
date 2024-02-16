@@ -17,7 +17,7 @@ class LIFOCache(BaseCaching):
             return
 
         if len(self.cache_data) >= self.MAX_ITEMS:
-            discarded_key = next(reversed(self.cache_data))
+            discarded_key = list(self.cache_data.keys())[-1]
             del self.cache_data[discarded_key]
             print("DISCARD:", discarded_key)
 
@@ -33,6 +33,9 @@ class LIFOCache(BaseCaching):
 
 if __name__ == "__main__":
     my_cache = LIFOCache()
+
+    my_cache.MAX_ITEMS = 2
+
     my_cache.put("A", "Hello")
     my_cache.put("B", "World")
     my_cache.put("C", "Holberton")
