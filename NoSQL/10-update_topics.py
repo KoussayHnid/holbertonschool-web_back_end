@@ -1,7 +1,15 @@
 #!/usr/bin/env python3
-""" python script that changes all topics of a school document based on the name"""
+"""
+Python function that changes all topics
+of a school document based on the name
+"""
 
 
 def update_topics(mongo_collection, name, topics):
-    """commande that update all topics"""
-    mongo_collection.update_many({"name": name}, {"$set": {"topics": topics}})
+    """
+    mongo_collection will be the pymongo
+    collection object
+    """
+    query = {"name": name}
+    new_values = {"$set": {"topics": topics}}
+    mongo_collection.update_many(query, new_values)
