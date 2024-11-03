@@ -1,9 +1,13 @@
------------------------i18n Project------------------
-Description:
-This project demonstrates the use of **internationalization (i18n)** in a Flask web application. It includes setting up the Flask-Babel extension for handling multiple languages, localizing timestamps, and managing locale preferences based on URL parameters, user settings, or request headers.
+------------------i18n Project----------------
+This project focuses on building a multilingual Flask application that supports internationalization (i18n) using Flask-Babel. The app dynamically translates content based on the user's preferred language and locale settings, with additional customization options through URL parameters and mock user login.
 
-Learning Objectives:
-- Set up a basic Flask application with i18n support.
-- Use Flask-Babel to localize templates and timestamps.
-- Manage language preferences using URL parameters, user settings, and request headers.
-- Understand how to compile and manage translation dictionaries.
+Project Overview:
+This project is part of the [C#20] curriculum, specifically aimed at implementing internationalization (i18n) in a Flask web application. This project teaches the following key skills
+Parametrizing Flask templates to display different languages.
+Inferring the correct locale based on URL parameters, user settings, or request headers.
+Localizing timestamps using appropriate time zones.
+Learning Objectives
+Configure Flask applications to support multiple languages.
+Infer the best locale setting for each user.
+Use Flask-Babel to manage translations.
+Localize timestamps based on the user's time zone.

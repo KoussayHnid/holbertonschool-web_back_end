@@ -1,33 +1,33 @@
 #!/usr/bin/env python3
-"""sumary_line
-
-Keyword arguments:
-argument -- description
-Return: return_description
-"""
-
-from flask import Flask, request, render_template
+""" a basic flask app"""
+from flask import Flask, render_template, request
 from flask_babel import Babel
 
 app = Flask(__name__)
 
-# Configure supported languages
-app.config['BABEL_DEFAULT_LOCALE'] = 'en'
-app.config['BABEL_SUPPORTED_LANGUAGES'] = ['en', 'es', 'fr']
 
-# Initialize Babel
+class Config(object):
+    """ Config class for Babel object """
+    LANGUAGES = ["en", "fr"]
+    BABEL_DEFAULT_LOCALE = "en"
+    BABEL_DEFAULT_TIMEZONE = "UTC"
+
+
+app.config.from_object(Config)
 babel = Babel(app)
 
-# Custom get_locale function to determine the best match for the user's language preference
-@babel.localeselector
-def get_locale():
-    # Using request.accept_languages to find the best match for supported languages
-    return request.accept_languages.best_match(app.config['BABEL_SUPPORTED_LANGUAGES'])
 
-# Route for index page
 @app.route('/')
-def index():
+def hello():
+    """ render a basic html file """
     return render_template('2-index.html')
 
-if __name__ == "__main__":
-    app.run(debug=True)
+
+@babel.localeselector
+def get_locale():
+    """ a function to determine the best match with the supported languages """
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+
+if __name__ == '__main__':
+    app.run()
