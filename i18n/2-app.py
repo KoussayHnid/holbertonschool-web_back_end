@@ -1,42 +1,33 @@
 #!/usr/bin/env python3
-"""Basic Flask app
+"""sumary_line
+
+Keyword arguments:
+argument -- description
+Return: return_description
 """
 
 from flask import Flask, request, render_template
 from flask_babel import Babel
-from os import getenv
 
-app = Flask(__name__, static_url_path='')
+app = Flask(__name__)
+
+# Configure supported languages
+app.config['BABEL_DEFAULT_LOCALE'] = 'en'
+app.config['BABEL_SUPPORTED_LANGUAGES'] = ['en', 'es', 'fr']
+
+# Initialize Babel
 babel = Babel(app)
 
-
-class Config(object):
-    """ Setup - Babel configuration """
-    LANGUAGES = ['en', 'fr']
-    # these are the inherent defaults just btw
-    BABEL_DEFAULT_LOCALE = 'en'
-    BABEL_DEFAULT_TIMEZONE = 'UTC'
-
-
-app.config.from_object('1-app.Config')
-
-
+# Custom get_locale function to determine the best match for the user's language preference
 @babel.localeselector
-def get_locale() -> str:
-    """ Determines best match for supported languages
-    """
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
+def get_locale():
+    # Using request.accept_languages to find the best match for supported languages
+    return request.accept_languages.best_match(app.config['BABEL_SUPPORTED_LANGUAGES'])
 
-
-@app.route('/', methods=['GET'], strict_slashes=False)
+# Route for index page
+@app.route('/')
 def index():
-    """ GET /
-        Return: 2-index.html
-    """
     return render_template('2-index.html')
 
-
 if __name__ == "__main__":
-    host = getenv("API_HOST", "0.0.0.0")
-    port = getenv("API_PORT", "5000")
-    app.run(host=host, port=port)
+    app.run(debug=True)
