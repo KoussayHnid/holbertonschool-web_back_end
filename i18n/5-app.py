@@ -1,20 +1,13 @@
 #!/usr/bin/env python3
 """basic Flask app"""
 from flask import Flask, render_template, request, g
-from flask_babel import Babel, gettext as _
+from flask_babel import Babel, _
 
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__)
+
+SUPPORTED_LANGUAGES = ['en', 'fr']
+
 babel = Babel(app)
-
-
-class Config:
-    """class cofig for the Flask app"""
-    LANGUAGES = ["en", "fr"]
-    BABEL_DEFAULT_LOCALE = 'en'
-    BABEL_DEFAULT_TIMEZONE = 'UTC'
-
-
-app.config.from_object(Config)
 
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
@@ -24,40 +17,34 @@ users = {
 }
 
 
-def get_user(user_id):
-    """Get a user from database."""
-    return users.get(user_id)
+def get_locale():
+    locale = request.args.get('locale')
+    if locale in SUPPORTED_LANGUAGES:
+        return locale
+    return request.accept_languages.best_match(SUPPORTED_LANGUAGES)
+
+
+babel.init_app(app, locale_selector=get_locale)
+
+
+def get_user():
+    """Retrieve a user based on the login_as URL parameter."""
+    user_id = request.args.get('login_as')
+    if user_id and user_id.isdigit():
+        return users.get(int(user_id))
+    return None
 
 
 @app.before_request
 def before_request():
-    """Set the global user for each request."""
-    user_id = request.args.get('login_as')
-    g.user = get_user(int(user_id)) if user_id else None
+    """Set g.user to the logged-in user, if any."""
+    g.user = get_user()
 
 
-@babel.localeselector
-def get_locale():
-    """
-    get_locale function
-    """
-    user = getattr(g, 'user', None)
-    if user is not None:
-        locale = user['locale']
-        if locale in app.config['LANGUAGES']:
-            return locale
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
-
-
-@app.route('/', methods=["GET"])
-def index():
-    """
-    index template
-    """
-    return render_template(
-        '5-index.html',
-        username=g.user['name'] if g.user else None)
+@app.route('/')
+def home():
+    return render_template('5-index.html')
 
 
 if __name__ == '__main__':
-    app.run(use_reloader=True, debug=True)
+    app.run()
