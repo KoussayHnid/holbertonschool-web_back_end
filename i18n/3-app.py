@@ -9,14 +9,18 @@ SUPPORTED_LANGUAGES = ['en', 'fr']
 
 babel = Babel(app)
 
+
 def get_locale():
     return request.accept_languages.best_match(SUPPORTED_LANGUAGES)
 
+
 babel.init_app(app, locale_selector=get_locale)
+
 
 @app.route('/')
 def home():
     return render_template('3-index.html')
+
 
 if __name__ == '__main__':
     app.run()
